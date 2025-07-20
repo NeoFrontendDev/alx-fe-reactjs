@@ -21,6 +21,7 @@ function App() {
   return (
     <UserContext.Provider
     value={userData}>
+      <ProfilePage />
     <>
         <div>
           <WelcomeMessage />
