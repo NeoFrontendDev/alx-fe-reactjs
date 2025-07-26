@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -5,6 +6,8 @@ import './App.css'
 import store from './store.js'
 import RecipeList from './RecipeList'
 import AddRecipeForm from './AddRecipeForm'
+import RecipeDetails from './RecipeDetails'
+import HomePage from 'HomePage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -27,6 +30,12 @@ function App() {
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
+        <Router>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="recipe/:id" element={<RecipeDetails />} />
+          </Routes>
+        </Router>
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
