@@ -53,6 +53,34 @@ addRecipe: (recipe) => {
       filteredRecipes: remaining.filter((recipe) =>
         Recipe.title.toLowerCase().includes(state.searchTerm.toLoweCase())  
          ),
-      };
+          favorites: 
+        state.favorites.filter((favId) =>
+          favId !== id),
+      },
     }),
-  }));
+
+    addFavorite: (recipeId) =>
+        set((state) =>
+          state.favorite.includes(recipeId) ? {} :
+          { favorites: [...state.favorites.recipeId] }
+            ),
+
+    removeFavorite: (recipeId) =>
+        set((state) => ({
+          favorites: state.favorites.filter((Id) =>
+            id !== recipeId
+          })),
+
+    generateRecommendations: () => {
+        const { recipes, favorites } =
+        get();
+        const recommended = recipes.filter((recipe) =>
+          ! favorites.include(recipe.id) && favorites.some((favId) =>
+            recipe.title[0] ===
+            get(0).recipes.find(f => f.id ===favId) ?.title[0] &&
+            Math.random() > 0.5
+          );
+          set({ recommendations: recommend });
+        },
+      }));
+
