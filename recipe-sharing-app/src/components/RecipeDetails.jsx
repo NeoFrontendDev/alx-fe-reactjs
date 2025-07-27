@@ -32,6 +32,7 @@ const RecipeDetails = () => {
     <button onClick={() => isFavorite ? removeFavorite(recipeId) : addFavorite(recipeId)}>
       {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
     </button>
+    <FavoriteButton recipeId={recipe.id} />
   );
 };
 
