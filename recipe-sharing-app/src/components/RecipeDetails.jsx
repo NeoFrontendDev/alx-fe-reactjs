@@ -18,6 +18,20 @@ const RecipeDetails = () => {
       <EditRecipeForm recipe={recipe} />
       <DeleteRecipeButton id={recipe.id} />
     </div>
+
+    const FavoriteButton = ({ recipeId }) => {
+  const { favorites, addFavorite, removeFavorite } = useRecipeStore((state) => ({
+    favorites: state.favorites,
+    addFavorite: state.addFavorite,
+    removeFavorite: state.removeFavorite,
+  }));
+
+  const isFavorite = favorites.includes(recipeId);
+
+  return (
+    <button onClick={() => isFavorite ? removeFavorite(recipeId) : addFavorite(recipeId)}>
+      {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+    </button>
   );
 };
 
