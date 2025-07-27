@@ -4,9 +4,11 @@ import RecipeList from './RecipeList';
 const HomePage = () => {
   return (
     <div>
-    <h1>All Recipes</h1>
+    <h1>Recipe Sharing App</h1>
       <SearhBar />
       <RecipeList/>
+      <FavoriteList/>
+      <RecommendationsList/>
     </div>
     );
 };
