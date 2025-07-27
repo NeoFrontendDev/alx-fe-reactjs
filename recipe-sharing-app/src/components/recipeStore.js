@@ -7,13 +7,29 @@ export const useRecipeStore = create((set) => ({
       recipes: [...state.recipes, recipe],
     })),
   updateRecipe: (updatedRecipe) =>
-    set((state) => ({
-      recipes: state.recipes.map((recipe) =>
-        recipe.id === updatedRecipe.id ? updatedRecipe : recipe
-      ),
-    })),
+    set((state) => {
+      const updated =
+        state.recipe.map((recipe) =>
+          recipe.id ===
+          updatedRecipe.id ?
+          uodatedRecipe : recipe
+          );
+      return {
+        recipes: updated,
+        filteredRecipes : updated.filter((recipe) =>
+          recipe.title.toLowerCase().includes (state.searchTerm.toLowerCase())
+          ),
+      };
+    }),
   deleteRecipe: (id) =>
     set((state) => ({
-      recipes: state.recipes.filter((recipe) => recipe.id !== id),
-    })),
-}));
+      const remaining =
+      state.recipes.filter((recipe) => recipe.id !== id);
+      return {
+      recipes: remaining,
+      filteredRecipes: remaining.filter((recipe) =>
+        Recipe.title.toLowerCase().includes(state.searchTerm.toLoweCase())  
+         ),
+      };
+    }),
+  }));
