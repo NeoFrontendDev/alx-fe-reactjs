@@ -8,12 +8,14 @@ const Search = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [searchAttempted, setSearchAttempted] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
     setUsers([]);
+    setSearchAttempted(true);
 
     try {
       const results = await fetchAdvancedUsers({ username, location, minRepos });
@@ -95,6 +97,12 @@ const Search = () => {
             </div>
           ))}
         </div>
+      )}
+
+      {searchAttempted && !loading && !error && users.length === 0 && (
+        <p className="mt-4 text-center text-gray-500">
+          Looks like we can't find the user.
+        </p>
       )}
     </div>
   );
