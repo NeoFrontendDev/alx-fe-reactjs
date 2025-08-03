@@ -101,7 +101,7 @@ const Search = () => {
 
       {searchAttempted && !loading && !error && users.length === 0 && (
         <p className="mt-4 text-center text-gray-500">
-          Looks like we can't find the user.
+          "Looks like we cant find the user."
         </p>
       )}
     </div>
