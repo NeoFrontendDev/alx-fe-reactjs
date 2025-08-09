@@ -3,18 +3,8 @@ import React from "react";
 const UserProfile = ({ name, bio, image }) => {
   return (
     <div
-      className="
-        bg-white 
-        rounded-lg 
-        shadow-md 
-        hover:shadow-xl 
-        transition-shadow 
-        duration-300 
-        ease-in-out 
-        p-4 sm:p-4 md:p-8 
-        max-w-xs sm:max-w-xs md:max-w-sm 
-        mx-auto
-      "
+      className="bg-gray-100 my-20 shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out 
+        p-4 sm:p-4 md:p-8 max-w-xs sm:max-w-xs md:max-w-sm mx-auto"
     >
       <img
         src={image}
