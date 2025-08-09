@@ -14,7 +14,7 @@ const UserProfile = ({ name, bio, image }) => {
       />
       <h2
         className="mt-4 text-center text-lg md:text-xl font-semibold transition-colors duration-300 
-          ease-in-out hover:text-blue-500"
+          text-blue-800 my-4 ease-in-out hover:text-blue-500"
       >
         {name}
       </h2>
