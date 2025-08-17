@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
-import { useState } from "react";
-
 const AddRecipeForm = () => {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
@@ -57,42 +55,45 @@ const AddRecipeForm = () => {
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-lg rounded-2xl p-6 max-w-2xl mx-auto"
+        className="bg-white shadow-lg rounded-2xl p-6 max-w-3xl mx-auto"
       >
         {}
-        <div className="mb-4">
-          <label className="block text-gray-700 font-medium mb-2">
-            Recipe Title
-          </label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          {errors.title && (
-            <p className="text-red-500 text-sm mt-1">{errors.title}</p>
-          )}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {}
+          <div className="mb-4 md:mb-0">
+            <label className="block text-gray-700 font-medium mb-2">
+              Recipe Title
+            </label>
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            {errors.title && (
+              <p className="text-red-500 text-sm mt-1">{errors.title}</p>
+            )}
+          </div>
+
+          {}
+          <div className="mb-4 md:mb-0">
+            <label className="block text-gray-700 font-medium mb-2">
+              Ingredients (one per line)
+            </label>
+            <textarea
+              rows="4"
+              value={ingredients}
+              onChange={(e) => setIngredients(e.target.value)}
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            {errors.ingredients && (
+              <p className="text-red-500 text-sm mt-1">{errors.ingredients}</p>
+            )}
+          </div>
         </div>
 
         {}
-        <div className="mb-4">
-          <label className="block text-gray-700 font-medium mb-2">
-            Ingredients (one per line)
-          </label>
-          <textarea
-            rows="4"
-            value={ingredients}
-            onChange={(e) => setIngredients(e.target.value)}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          {errors.ingredients && (
-            <p className="text-red-500 text-sm mt-1">{errors.ingredients}</p>
-          )}
-        </div>
-
-        {}
-        <div className="mb-4">
+        <div className="mb-4 mt-6">
           <label className="block text-gray-700 font-medium mb-2">
             Preparation Steps (one per line)
           </label>
@@ -110,7 +111,7 @@ const AddRecipeForm = () => {
         {}
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition"
+          className="w-full md:w-auto bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition"
         >
           Submit Recipe
         </button>
@@ -120,4 +121,3 @@ const AddRecipeForm = () => {
 };
 
 export default AddRecipeForm;
-
