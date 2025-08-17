@@ -1,28 +1,40 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
+import { useState } from "react";
+
 const AddRecipeForm = () => {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [steps, setSteps] = useState("");
   const [errors, setErrors] = useState({});
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Validation checks
+  const validate = () => {
     let formErrors = {};
-    if (!title.trim()) formErrors.title = "Recipe title is required.";
+
+    if (!title.trim()) {
+      formErrors.title = "Recipe title is required.";
+    }
+
     if (!ingredients.trim()) {
       formErrors.ingredients = "Ingredients are required.";
     } else if (ingredients.split("\n").length < 2) {
       formErrors.ingredients = "Please include at least 2 ingredients.";
     }
-    if (!steps.trim()) formErrors.steps = "Preparation steps are required.";
 
+    if (!steps.trim()) {
+      formErrors.steps = "Preparation steps are required.";
+    }
+
+    return formErrors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formErrors = validate();
     setErrors(formErrors);
 
-    // If no errors, submit
     if (Object.keys(formErrors).length === 0) {
       const newRecipe = {
         id: Date.now(),
@@ -30,9 +42,9 @@ const AddRecipeForm = () => {
         ingredients: ingredients.split("\n"),
         instructions: steps.split("\n"),
       };
+
       console.log("New Recipe Submitted:", newRecipe);
 
-      // Reset form
       setTitle("");
       setIngredients("");
       setSteps("");
@@ -47,7 +59,7 @@ const AddRecipeForm = () => {
         onSubmit={handleSubmit}
         className="bg-white shadow-lg rounded-2xl p-6 max-w-2xl mx-auto"
       >
-        {/* Recipe Title */}
+        {}
         <div className="mb-4">
           <label className="block text-gray-700 font-medium mb-2">
             Recipe Title
@@ -63,7 +75,7 @@ const AddRecipeForm = () => {
           )}
         </div>
 
-        {/* Ingredients */}
+        {}
         <div className="mb-4">
           <label className="block text-gray-700 font-medium mb-2">
             Ingredients (one per line)
@@ -79,7 +91,7 @@ const AddRecipeForm = () => {
           )}
         </div>
 
-        {/* Preparation Steps */}
+        {}
         <div className="mb-4">
           <label className="block text-gray-700 font-medium mb-2">
             Preparation Steps (one per line)
@@ -95,7 +107,7 @@ const AddRecipeForm = () => {
           )}
         </div>
 
-        {/* Submit Button */}
+        {}
         <button
           type="submit"
           className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition"
@@ -108,3 +120,4 @@ const AddRecipeForm = () => {
 };
 
 export default AddRecipeForm;
+
