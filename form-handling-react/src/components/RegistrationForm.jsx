@@ -1,20 +1,11 @@
 import { useState } from "react";
 
 function RegistrationForm() {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const [error, setError] = useState("");
-
-  const handleChange = (e) => {
-    setFormData({ 
-      ...formData, 
-      [e.target.name]: e.target.value 
-    });
-  };
 
   const mockApiCall = async (data) => {
     return new Promise((resolve) => {
@@ -28,17 +19,19 @@ function RegistrationForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.username || !formData.email || !formData.password) {
+    if (!username || !email || !password) {
       setError("All fields are required!");
       return;
     }
 
     setError("");
-    const response = await mockApiCall(formData);
+    const response = await mockApiCall({ username, email, password });
 
     if (response.success) {
       alert("Registration successful!");
-      setFormData({ username: "", email: "", password: "" });
+      setUsername("");
+      setEmail("");
+      setPassword("");
     }
   };
 
@@ -50,31 +43,31 @@ function RegistrationForm() {
 
       <div>
         <label>Username:</label>
-        <input 
-          type="text" 
+        <input
+          type="text"
           name="username"
-          value={formData.username}
-          onChange={handleChange} 
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
       </div>
 
       <div>
         <label>Email:</label>
-        <input 
-          type="email" 
+        <input
+          type="email"
           name="email"
-          value={formData.email}
-          onChange={handleChange} 
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
 
       <div>
         <label>Password:</label>
-        <input 
-          type="password" 
+        <input
+          type="password"
           name="password"
-          value={formData.password}
-          onChange={handleChange} 
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
 
