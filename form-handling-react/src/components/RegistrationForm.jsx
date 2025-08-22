@@ -5,7 +5,7 @@ function RegistrationForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [error, setError] = useState("");
+  const [error, setErrors] = useState("");
 
   const mockApiCall = async (data) => {
     return new Promise((resolve) => {
@@ -20,17 +20,17 @@ function RegistrationForm() {
     e.preventDefault();
 
     if (!password) {
-      setError("All fields are required!");
+      setErrors("All fields are required!");
       return;
     }
 
     if (!email) {
-      setError("All fields are required!");
+      setErrors("All fields are required!");
       return;
     }
 
     if (!username) {
-      setError("All fields are required!");
+      setErrors("All fields are required!");
       return;
     }
 
