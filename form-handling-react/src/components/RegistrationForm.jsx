@@ -29,6 +29,11 @@ function RegistrationForm() {
       return;
     }
 
+    if (!username) {
+      setError("All fields are required!");
+      return;
+    }
+
     setError("");
     const response = await mockApiCall({ username, email, password });
 
