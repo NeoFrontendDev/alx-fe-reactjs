@@ -30,7 +30,7 @@ function App() {
 
         {}
         <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:postId" element={<BlogPost />} />
+        <Route path="/blog/:id" element={<BlogPost />}  />
 
         {}
         <Route
